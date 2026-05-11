@@ -9,12 +9,11 @@ const { all, get, initDb, run } = require("./db");
 
 const app = express();
 const PORT = Number(process.env.PORT || 5000);
-const API_BASE_URL = process.env.API_BASE_URL || `http://localhost:${PORT}`;
+const API_BASE_URL = process.env.API_BASE_URL || "https://ether-ai-9ue1.onrender.com";
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
 const allowedOrigins = new Set([
-  process.env.CLIENT_ORIGIN || "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "http://localhost:5173",
+  process.env.CLIENT_ORIGIN || "https://ether-ai-1.onrender.com",
+  "https://ether-ai-1.onrender.com",
 ]);
 
 app.use(
@@ -27,7 +26,7 @@ app.use(
 );
 app.use(express.json());
 
-const clientOrigin = process.env.CLIENT_ORIGIN || "http://127.0.0.1:5173";
+const clientOrigin = process.env.CLIENT_ORIGIN || "https://ether-ai-1.onrender.com";
 
 app.get(["/", "/login", "/signup"], (_req, res) => {
   res.redirect(clientOrigin);

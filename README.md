@@ -2,7 +2,50 @@
 
 Full-stack task manager built with React, Node.js, Express, JWT authentication, role-based access control, and PostgreSQL.
 
-## Run locally
+## Render URLs
+
+- Frontend: `https://ether-ai-1.onrender.com`
+- Backend: `https://ether-ai-9ue1.onrender.com`
+
+## Render deploy settings
+
+Frontend service:
+
+```bash
+Root Directory: frontend
+Build Command: npm install && npm run build
+Start Command: npm run preview -- --host 0.0.0.0 --port $PORT
+```
+
+Frontend environment variables:
+
+```bash
+VITE_API_URL=https://ether-ai-9ue1.onrender.com/api
+VITE_BACKEND_BASE_URL=https://ether-ai-9ue1.onrender.com
+VITE_APP_BASE_URL=https://ether-ai-1.onrender.com
+```
+
+Backend service:
+
+```bash
+Root Directory: backend
+Build Command: npm install
+Start Command: npm start
+```
+
+Backend environment variables:
+
+```bash
+PORT=5000
+CLIENT_ORIGIN=https://ether-ai-1.onrender.com
+API_BASE_URL=https://ether-ai-9ue1.onrender.com
+DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+JWT_SECRET=change-this-secret
+```
+
+Do not use `npm build dev` on Render. Use `npm run build` for the frontend build script. The backend does not have a build step.
+
+## Run the project
 
 Backend:
 
@@ -16,8 +59,8 @@ Backend config lives in `backend/.env`:
 
 ```bash
 PORT=5000
-CLIENT_ORIGIN=http://localhost:5173
-API_BASE_URL=http://localhost:5000
+CLIENT_ORIGIN=https://ether-ai-1.onrender.com
+API_BASE_URL=https://ether-ai-9ue1.onrender.com
 DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 JWT_SECRET=change-this-secret
 ```
@@ -33,12 +76,12 @@ npm run dev
 Frontend config lives in `frontend/.env`:
 
 ```bash
-VITE_API_URL=http://localhost:5000/api
-VITE_BACKEND_BASE_URL=http://localhost:5000
-VITE_APP_BASE_URL=http://localhost:5173
+VITE_API_URL=https://ether-ai-9ue1.onrender.com/api
+VITE_BACKEND_BASE_URL=https://ether-ai-9ue1.onrender.com
+VITE_APP_BASE_URL=https://ether-ai-1.onrender.com
 ```
 
-Open `http://127.0.0.1:5173/`. The API runs at `http://localhost:5000/api`.
+Open `https://ether-ai-1.onrender.com`. The API runs at `https://ether-ai-9ue1.onrender.com/api`.
 
 ## Features
 
