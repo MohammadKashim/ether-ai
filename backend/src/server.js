@@ -11,15 +11,34 @@ const app = express();
 const PORT = Number(process.env.PORT || 5000);
 const API_BASE_URL = process.env.API_BASE_URL || "https://ether-ai-9ue1.onrender.com";
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
-const allowedOrigins = new Set([
-  process.env.CLIENT_ORIGIN || "https://kashim-ether-ai.netlify.app",
-  "https://kashim-ether-ai.netlify.app",
-]);
+
+function normalizeOrigin(origin) {
+  return origin?.replace(/\/$/, "");
+}
+
+const allowedOrigins = new Set(
+  [
+    process.env.CLIENT_ORIGIN || "https://kashim-ether-ai.netlify.app",
+    ...(process.env.CLIENT_ORIGINS || "").split(","),
+    "https://kashim-ether-ai.netlify.app",
+  ]
+    .map((origin) => normalizeOrigin(origin.trim()))
+    .filter(Boolean),
+);
+
+function isAllowedOrigin(origin) {
+  const normalizedOrigin = normalizeOrigin(origin);
+  return (
+    !normalizedOrigin ||
+    allowedOrigins.has(normalizedOrigin) ||
+    /^https:\/\/[a-z0-9-]+--kashim-ether-ai\.netlify\.app$/i.test(normalizedOrigin)
+  );
+}
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.has(origin)) return callback(null, true);
+      if (isAllowedOrigin(origin)) return callback(null, true);
       return callback(new Error("Not allowed by CORS"));
     },
   }),
