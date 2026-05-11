@@ -2,19 +2,19 @@
 
 Full-stack task manager built with React, Node.js, Express, JWT authentication, role-based access control, and PostgreSQL.
 
-## Render URLs
+## Production URLs
 
-- Frontend: `https://ether-ai-1.onrender.com`
+- Frontend: `https://kashim-ether-ai.netlify.app`
 - Backend: `https://ether-ai-9ue1.onrender.com`
 
-## Render deploy settings
+## Frontend deploy settings
 
-Frontend service:
+Netlify frontend:
 
 ```bash
-Root Directory: frontend
-Build Command: npm install && npm run build
-Start Command: npm run preview -- --host 0.0.0.0 --port $PORT
+Base directory: frontend
+Build command: npm run build
+Publish directory: frontend/dist
 ```
 
 Frontend environment variables:
@@ -22,10 +22,12 @@ Frontend environment variables:
 ```bash
 VITE_API_URL=https://ether-ai-9ue1.onrender.com/api
 VITE_BACKEND_BASE_URL=https://ether-ai-9ue1.onrender.com
-VITE_APP_BASE_URL=https://ether-ai-1.onrender.com
+VITE_APP_BASE_URL=https://kashim-ether-ai.netlify.app
 ```
 
-Backend service:
+## Backend deploy settings
+
+Render backend:
 
 ```bash
 Root Directory: backend
@@ -37,7 +39,7 @@ Backend environment variables:
 
 ```bash
 PORT=5000
-CLIENT_ORIGIN=https://ether-ai-1.onrender.com
+CLIENT_ORIGIN=https://kashim-ether-ai.netlify.app
 API_BASE_URL=https://ether-ai-9ue1.onrender.com
 DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 JWT_SECRET=change-this-secret
@@ -59,7 +61,7 @@ Backend config lives in `backend/.env`:
 
 ```bash
 PORT=5000
-CLIENT_ORIGIN=https://ether-ai-1.onrender.com
+CLIENT_ORIGIN=https://kashim-ether-ai.netlify.app
 API_BASE_URL=https://ether-ai-9ue1.onrender.com
 DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 JWT_SECRET=change-this-secret
@@ -78,10 +80,10 @@ Frontend config lives in `frontend/.env`:
 ```bash
 VITE_API_URL=https://ether-ai-9ue1.onrender.com/api
 VITE_BACKEND_BASE_URL=https://ether-ai-9ue1.onrender.com
-VITE_APP_BASE_URL=https://ether-ai-1.onrender.com
+VITE_APP_BASE_URL=https://kashim-ether-ai.netlify.app
 ```
 
-Open `https://ether-ai-1.onrender.com`. The API runs at `https://ether-ai-9ue1.onrender.com/api`.
+Open `https://kashim-ether-ai.netlify.app`. The API runs at `https://ether-ai-9ue1.onrender.com/api`.
 
 ## Features
 

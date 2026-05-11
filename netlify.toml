@@ -1,0 +1,14 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  VITE_API_URL = "https://ether-ai-9ue1.onrender.com/api"
+  VITE_BACKEND_BASE_URL = "https://ether-ai-9ue1.onrender.com"
+  VITE_APP_BASE_URL = "https://kashim-ether-ai.netlify.app"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
